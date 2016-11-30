@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="springApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>Start Page</title>
+
+		<script type="text/javascript" src="resources/js/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="resources/js/angular.min.js"></script>
+		<script type="text/javascript" src="resources/js/angular-resource.min.js"></script>
+		<script type="text/javascript" src="resources/js/angular-route.min.js"></script>
+		<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="resources/js/start.js"></script>
+
+		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="resources/css/app.css">
+	</head>
+	<body ng-controller="LanguageController as language">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-10"></div>
+				<div class="col-md-2">
+					<a href="#" ng-click="language.changeLanguage('en_US')"><img src="resources/img/usa-flag.png" width="40px"></a>
+					<a href="#" ng-click="language.changeLanguage('pt_BR')"><img src="resources/img/br-flag.png" width="40px"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid" ng-controller="ClienteController as controller">
+			<fieldset>
+				<legend>
+					<strong>{{messages['label.cadastro']}}</strong>
+				</legend>
+
+				<div ng-show="!appForm.nome.$touched && !appForm.cpf.$touched && !initialState" class="alert alert-info" role="alert">
+					<strong id="infoMessage"></strong>
+				</div>
+
+				<div ng-show="appForm.$valid && saveError" class="alert alert-danger" role="alert">
+					<strong id="errorMessage"></strong>
+				</div>
+
+				<div class="container-fluid well">
+					<form name="appForm" novalidate>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>{{messages['label.nome']}}</label>
+									<input class="form-control" type="text" ng-model="cliente.nome" placeholder="{{messages['placeholder.nome']}}" ng-required="true" name="nome"
+										   ng-class="(appForm.nome.$touched && appForm.nome.$invalid) ? 'invalid-field' : ''">
+									<span ng-show="appForm.nome.$touched && appForm.nome.$error.required" class="error-msg">{{messages['val.nome']}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>{{messages['label.cpf']}}</label>
+									<input class="form-control" type="text" ng-model="cliente.cpf" placeholder="{{messages['placeholder.cpf']}}" ng-minlength="11" ng-maxlength="11"
+										   name="cpf" ng-required="true" ng-class="(appForm.cpf.$touched && appForm.cpf.$invalid) ? 'invalid-field' : ''" valida-cpf
+										   check-cpf-availability>
+									<span ng-show="appForm.cpf.$pending.checkCpfAvailability">{{messages['msg.checando.cpf']}}</span>
+									<span ng-show="appForm.cpf.$error.checkCpfAvailability" class="error-msg">{{messages['val.cpf.em.uso']}}</span>
+									<span ng-show="appForm.cpf.$touched && appForm.cpf.$error.validaCpf" class="error-msg">{{messages['val.cpf']}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<button class="btn btn-primary" ng-click="controller.save()" ng-disabled="appForm.$invalid">{{messages['label.salvar']}}</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</fieldset>
+
+			<fieldset ng-if="clientes.length > 0">
+				<legend>
+					<strong>{{messages['label.clientes']}}</strong>
+				</legend>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>{{messages['label.id']}}</th>
+							<th class="text-center">{{messages['label.nome']}}</th>
+							<th class="text-center">{{messages['label.cpf']}}</th>
+							<th class="text-center">{{messages['label.excluir']}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="cliente in clientes" class="cliente_{{cliente.identifier}}">
+							<td>
+								<a href="{{cliente.links[0].href != null ? cliente.links[0].href : cliente._links.self.href}}" target="_blank">{{cliente.identifier}}</a>
+							</td>
+							<td class="text-center">{{cliente.nome}}</td>
+							<td class="text-center">{{cliente.cpf}}</td>
+							<td colspan="2" class="text-center">
+								<button class="btn btn-danger" ng-click="controller.openRemoveModal(cliente)" data-toggle="modal" data-target="#deleteModal">
+									{{messages['label.excluir']}}
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+
+			<!-- Delete Modal -->
+			<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="deleteModalTitle">{{messages['modal.remocao.titulo']}}</h4>
+						</div>
+						<div class="modal-body">
+							<strong id="deleteModalText"></strong>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">{{messages['label.nao']}}</button>
+							<button type="button" class="btn btn-danger" ng-click="controller.remove(cliente)">{{messages['label.sim']}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

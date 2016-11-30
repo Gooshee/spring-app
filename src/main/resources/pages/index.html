@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Index</title>
+
+		<!-- Por padrao, no Spring MVC todos os arquivos dentro dos diretórios /static, /public, /resources ou /META-INF/resources são disponibilizados para acesso externo -->
+		<link rel="stylesheet" href="app.css" type="text/css"/>
+	</head>
+
+	<body>
+		<!-- Para recuperar as mensagens dos aquivos de mensagem da aplicação (.properties) no Thymeleaf é preciso utilizar a sintaxe #{} -->
+		<!-- Para recuperar o valor de uma variável ou um objeto é preciso utilizar a sintaxe ${} -->
+		<!-- O Thymeleaf disponibiliza alguns objetos implícitos quando integrado com o Spring MVC, entre eles estão #httpSession, #httpServletRequest, etc. -->
+		<!-- O Thymeleaf também disponibiliza alguns mapas implícitos quando integrado com o Spring MVC, entre eles estão param, session, etc. -->
+		<!-- O Thymeleaf possui funções pré-definidas que podem ser utilizadas através da sintaxe ${#funcPrefix.funcName()} -->
+		<!-- Com os atributos do Thymeleaf (prefixo th) é possível aplicar lógicas para geração de código -->
+		<!-- Para utilizar o serviço de formatação do Spring basta a sintaxe de chaves duplas ${{}} -->
+		<!-- Para associar o conteúdo de um formulário a um backing bean é preciso utilizar o atributo th:object do Thymeleaf, especificando um objeto que esteja no
+			 modelo atual. Não é possível navegar dentro desse objeto, ou seja, a expressão th:object="${cliente.nome}" não funcionará. -->
+		<!-- Dentro de formulários, para associar campos aos atributos do objeto especificado no atributo th:object, é preciso utilizar uma expressão de seleção
+				 (*{}), uma vez que essas expressões são avaliadas somente na submissão do formulário para recuperar os valores informados e atribuir as propriedades
+				 do objeto. -->
+		<h1 th:text="#{label.saudacoes}"></h1>
+	</body>
+</html>

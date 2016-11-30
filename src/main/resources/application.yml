@@ -1,0 +1,70 @@
+br.com.logging:
+ dir: C:\\Users\\matheus.goes\\Downloads
+ codigos:
+  - 10
+  - 20
+  - 30
+
+spring:
+  jackson.serialization:
+    WRITE_DATES_AS_TIMESTAMPS: false
+  data:
+    mongodb:
+      uri: mongodb://@mongodb-address@:27017/test
+  redis:
+#    database: 0
+    host: @redis-address@
+#    port: 6379
+  rabbitmq:
+    host: @rabbitmq-address@
+#    port: 5672
+  datasource:
+      initialize: false
+      driver-class-name: net.ucanaccess.jdbc.UcanaccessDriver
+      continue-on-error: true
+      validation-query: SELECT 1 FROM DUAL
+      url: jdbc:ucanaccess://C:/Users/matheus.goes/Documents/IdeaProjects/spring-app/dir/dnecom.mdb;
+      initial-size: 10
+      max-active: 100
+      max-idle: 100
+      min-idle: 10
+      test-on-borrow: true
+      test-while-idle: true
+      remove-abandoned: true
+      jdbc-interceptors: ConnectionState;StatementFinalizer
+  jpa:
+      hibernate:
+        ddl-auto: none
+      properties:
+        javax.persistence.validation.mode: none
+        hibernate:
+          temp.use_jdbc_metadata_defaults: false
+          dialect: org.hibernate.dialect.SQLServerDialect
+          show-sql: true
+          format-sql: false
+          use-sql-comments: false
+          generate-statistics: false
+          connection:
+            useUnicode: true
+            characterEncoding: UTF-8
+            charSet: UTF-8
+            zeroDateTimeBehavior: convertToNull
+          current-session-context-class: thread
+          auto-close-session: true
+          transaction.flush-before-completion: true
+          jdbc.batch-size: 3
+  hornetq.embedded.queues: jms/simpleQueue, jms/simpleQueue2
+logging:
+  level:
+    org.springframework: INFO
+security:
+  ignored: /**
+#security:
+#  oauth2:
+#    resource:
+#      user-info-uri: http://localhost:8080/me
+info.app:
+  name: '@project.artifactId@'
+  version: '@project.version@'
+
+management.security.enabled: false

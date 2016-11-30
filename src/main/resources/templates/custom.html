@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:custom="http://spring-app-custom.com">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>BarCode</title>
+		<style type="text/css">
+			body {
+				font-family: "trebuchet ms", sans-serif;
+			}
+
+			#barcode {
+				padding: 25px;
+			}
+
+			.div-code {
+				float: left;
+				height: 1.5in; /*size*/
+			}
+
+			.label-code {
+				text-align: center;
+				font-size: 15px;
+			}
+
+			.bars-div {
+				display: inline-block;
+			}
+
+			.bar1 {
+				border-left: 2px solid black;
+			}
+
+			.bar2 {
+				border-left: 4px solid black;
+			}
+
+			.bar3 {
+				border-left: 6px solid black;
+			}
+
+			.bar4 {
+				border-left: 8px solid black;
+			}
+
+			.space0 {
+				margin-right: 0;
+			}
+
+			.space1 {
+				margin-right: 2px;
+			}
+
+			.space2 {
+				margin-right: 4px;
+			}
+
+			.space3 {
+				margin-right: 6px;
+			}
+
+			.space4 {
+				margin-right: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<div id="barcode">
+				<div align="center">
+					<div class="bars-div">
+						<custom:barcode code="${#vars.get('barCode')}"/>
+					</div>
+					<div>
+						<label class="label-code" th:text="${#vars.get('barCode')}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+server.port: @service-port@
+spring:
+  application:
+    name: '@project.artifactId@'
+  cloud:
+    config:
+      uri: http://localhost:8888

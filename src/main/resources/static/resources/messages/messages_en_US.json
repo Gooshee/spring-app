@@ -1,0 +1,23 @@
+{
+  "label.cadastro": "Register",
+  "label.nome": "Name",
+  "label.cpf": "CPF",
+  "placeholder.nome": "Client name",
+  "placeholder.cpf": "CPF",
+  "label.salvar": "Save",
+  "label.clientes": "Clients",
+  "label.excluir": "Delete",
+  "msg.cliente.salvo.sucesso": "Client saved!",
+  "msg.cliente.removido.sucesso": "Client removed!",
+  "val.nome": "Please, fill out the Name field!",
+  "val.cpf": "Please, fill out the CPF field with a valid value of 11 digits!",
+  "modal.remocao.titulo": "Are you sure?",
+  "modal.remocao.msg": "Do you really want to remove {{clientName}}?",
+  "label.fechar": "Close",
+  "label.id": "ID",
+  "msg.checando.cpf": "Checking if this CPF is available...",
+  "val.cpf.em.uso": "This CPF is already in use!",
+  "msg.erro.cadastro.cliente": "An error occurred during the client registration, Please, try again.",
+  "label.sim": "Yes",
+  "label.nao": "No"
+}

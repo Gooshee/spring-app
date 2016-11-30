@@ -1,0 +1,37 @@
+version: '2'
+
+#docker run --name mongodb -d -P mongo
+#docker run --name redis -d -P redis
+#docker run --name rabbitmq -d -P rabbitmq:3-management
+
+services:
+#  @project.artifactId@:
+#    build: .
+#    image: @project.artifactId@
+#    ports:
+#     - "@service-port@:@service-port@"
+#    links:
+#     - "redis:redis"
+#     - "mongodb:mongodb"
+#     - "rabbitmq:rabbitmq"
+#    depends_on:
+#     - redis
+#     - mongodb
+#     - rabbitmq
+#    environment:
+#     - COMPOSE_PROJECT_NAME="@project.artifactId@"
+#    networks:
+#     - default
+  redis:
+    image: redis
+    ports:
+     - "6379:6379"
+  mongodb:
+    image: mongo
+    ports:
+     - "27017:27017"
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+     - "5672:5672"
+     - "15672:15672"

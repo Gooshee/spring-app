@@ -1,0 +1,11 @@
+.text-center {
+	text-align: center;
+}
+
+.invalid-field {
+	border: 1px solid #ff0000;
+}
+
+.error-msg {
+	color: #ff0000;
+}

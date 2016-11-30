@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring-app/soap"
+		   targetNamespace="http://spring-app/soap" elementFormDefault="qualified">
+
+	<xs:element name="getProductRequest" type="tns:getProductRequest"/>
+
+	<xs:element name="getProductResponse" type="tns:getProductResponse"/>
+
+	<xs:element name="product" type="tns:product"/>
+
+	<xs:complexType name="product">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="0"/>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getProductResponse">
+		<xs:sequence>
+			<xs:element name="client" type="tns:product" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getProductRequest">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="productWS">
+		<xs:sequence/>
+	</xs:complexType>
+</xs:schema>

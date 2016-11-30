@@ -1,0 +1,23 @@
+{
+  "label.cadastro": "Cadastro",
+  "label.nome": "Nome",
+  "label.cpf": "CPF",
+  "placeholder.nome": "Informe o nome do cliente",
+  "placeholder.cpf": "Informe o CPF do cliente",
+  "label.salvar": "Salvar",
+  "label.clientes": "Clientes",
+  "label.excluir": "Excluir",
+  "msg.cliente.salvo.sucesso": "Cliente salvo com sucesso!",
+  "msg.cliente.removido.sucesso": "Cliente removido com sucesso!",
+  "val.nome": "Por favor, preencha o campo Nome!",
+  "val.cpf": "Por favor, preencha o campo CPF com um valor válido de 11 dígitos!",
+  "modal.remocao.titulo": "Você tem certeza?",
+  "modal.remocao.msg": "Deseja realmente remover {{clientName}}?",
+  "label.fechar": "Fechar",
+  "label.id": "ID",
+  "msg.checando.cpf": "Checando se o CPF informado está disponível...",
+  "val.cpf.em.uso": "O CPF informado já está em uso!",
+  "msg.erro.cadastro.cliente": "Ocorreu um erro durante o cadastro do cliente. Por favor, tente novamente.",
+  "label.sim": "Sim",
+  "label.nao": "Não"
+}
